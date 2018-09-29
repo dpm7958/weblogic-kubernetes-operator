@@ -561,6 +561,12 @@ public class Domain {
     }
     String outputStr = result.stdout().trim();
     logger.info("Command returned " + outputStr);
+
+    if (domainMap.get("domainUID").equals("domain7")) {
+      result = ExecCommand.exec("helm get manifest " + domainMap.get("domainUID"));
+      System.out.println("manifest of " + domainMap.get("domainUID"));
+      System.out.println(result.stdout());
+    }
   }
 
   private void callShellScriptByExecToPod(String username, String password, String webappName)
